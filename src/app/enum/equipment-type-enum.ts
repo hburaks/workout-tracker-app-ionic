@@ -1,4 +1,5 @@
 export enum EquipmentTypeEnum {
+    ANY = 'any',
     NONE = 'none',
     BARBELL = 'barbell',
     DUMBBELL = 'dumbbell',

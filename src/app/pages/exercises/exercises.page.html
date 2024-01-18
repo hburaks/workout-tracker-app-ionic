@@ -1,26 +1,77 @@
+<div *ngIf="isCardOpen" class="pop">
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-sm="6">
+        <ion-card class="ion-justify-content-center">
+          <ion-button id="close-button" color="dark" fill="none" (click)="toggleCard()">
+            <ion-icon slot="icon-only" name="close"></ion-icon>
+          </ion-button>
+          <ion-card-header>
+            <ion-card-title>Card Title</ion-card-title>
+            <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            Here's a small text description for the card content. Nothing more, nothing less.
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+<div *ngIf="isCardOpen" class="background-cover">hi</div>
 <ion-header [translucent]="true">
-    <ion-toolbar>
-        <ion-title class="ion-text-center">Exercises</ion-title>
-    </ion-toolbar>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Exercises</ion-title>
+  </ion-toolbar>
 </ion-header>
-
 <ion-content>
-    <ion-grid>
-        <ion-row class="ion-justify-content-center">
-            <ion-col size="12" size-sm="6">
-
-                <ion-searchbar [debounce]="200" (ionInput)="handleInput($event)"></ion-searchbar>
-
-                <ion-list>
-                    <ion-item *ngFor="let result of results">
-                        <ion-label>
-                            <h1>{{ result.name }}</h1>
-                            <p>{{result.dbExercise.primaryMuscles | titlecase}}</p>
-                            <p>{{result.dbExercise.primaryMuscles | titlecase}}</p>
-                        </ion-label>
-                    </ion-item>
-                </ion-list>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-sm="6">
+        <ion-searchbar [debounce]="200" (ionInput)="handleInput($event)"></ion-searchbar>
+        <ion-accordion-group expand="inset" #accordionGroup>
+          <ion-accordion value="first">
+            <ion-item slot="header">
+              <ion-label>Filter Body Part</ion-label>
+            </ion-item>
+            <div *ngFor="let muscleGroupType of muscleGroupTypeEnums" slot="content">
+              <div class="ion-padding" slot="content"
+                   (click)="filterByPrimaryMuscle(muscleGroupType)">
+                {{muscleGroupType | titlecase}}
+              </div>
+            </div>
+          </ion-accordion>
+          <ion-accordion value="second">
+            <ion-item slot="header">
+              <ion-label>Filter Equipment</ion-label>
+            </ion-item>
+            <div *ngFor="let equipmentType of equipmentTypeEnums" slot="content">
+              <div class="ion-padding" slot="content"
+                   (click)="filterByEquipmentType(equipmentType)">
+                {{equipmentType | titlecase}}
+              </div>
+            </div>
+          </ion-accordion>
+        </ion-accordion-group>
+        <ion-list>
+          <ion-item (click)="toggleCard()" *ngFor="let result of results">
+            <h2 slot="start">{{ result.name != null ? result.name[0].toUpperCase() : null }}</h2>
+            <ion-label>
+              <h2>{{ result.name }}</h2>
+              <div>
+                <ion-row class="ion-justify-content-between">
+                  <ion-col>
+                    <div>{{result.dbExercise.primaryMuscles | titlecase}}</div>
+                  </ion-col>
+                  <ion-col size="3">
+                    <div>{{result.rm1 ? "1RM: " + result.rm1 : null}}</div>
+                  </ion-col>
+                </ion-row>
+              </div>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

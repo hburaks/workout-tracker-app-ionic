@@ -17,7 +17,7 @@ export class ExerciseService {
             "creationDate": "2024-01-07T11:36:59.646+00:00",
             "lastModifiedDate": "2024-01-07T11:36:59.646+00:00",
             "note": null,
-            "rm1": null,
+            "rm1": 150,
             "dbExercise": {
                 "name": "3/4 Sit-Up",
                 "force": "pull",

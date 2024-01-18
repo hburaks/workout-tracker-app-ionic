@@ -1,4 +1,5 @@
 export enum MuscleGroupTypeEnum {
+    ANY = 'any',
     QUADRICEPS = 'quadriceps',
     SHOULDERS = 'shoulders',
     ABDOMINALS = 'abdominals',
