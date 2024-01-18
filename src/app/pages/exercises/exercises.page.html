@@ -34,39 +34,31 @@
             <ion-item slot="header">
               <ion-label>Filter Body Part</ion-label>
             </ion-item>
-            <div *ngFor="let muscleGroupType of muscleGroupTypeEnums" slot="content">
-              <div class="ion-padding" slot="content"
-                   (click)="filterByPrimaryMuscle(muscleGroupType)">
+            <ion-list *ngFor="let muscleGroupType of muscleGroupTypeEnums" slot="content">
+              <ion-item slot="content"
+                        (click)="filterByPrimaryMuscle(muscleGroupType)">
                 {{muscleGroupType | titlecase}}
-              </div>
-            </div>
+              </ion-item>
+            </ion-list>
           </ion-accordion>
           <ion-accordion value="second">
             <ion-item slot="header">
               <ion-label>Filter Equipment</ion-label>
             </ion-item>
-            <div *ngFor="let equipmentType of equipmentTypeEnums" slot="content">
-              <div class="ion-padding" slot="content"
-                   (click)="filterByEquipmentType(equipmentType)">
-                {{equipmentType | titlecase}}
-              </div>
-            </div>
+            <ion-list *ngFor="let equipmentType of equipmentTypeEnums" slot="content">
+              <ion-item slot="content"
+                        (click)="filterByEquipmentType(equipmentType)">{{equipmentType | titlecase}}</ion-item>
+            </ion-list>
           </ion-accordion>
         </ion-accordion-group>
         <ion-list>
           <ion-item (click)="toggleCard()" *ngFor="let result of results">
-            <h2 slot="start">{{ result.name != null ? result.name[0].toUpperCase() : null }}</h2>
+            <h1 slot="start">{{ result.name != null ? result.name[0].toUpperCase() : null }}</h1>
             <ion-label>
               <h2>{{ result.name }}</h2>
-              <div>
-                <ion-row class="ion-justify-content-between">
-                  <ion-col>
-                    <div>{{result.dbExercise.primaryMuscles | titlecase}}</div>
-                  </ion-col>
-                  <ion-col size="3">
-                    <div>{{result.rm1 ? "1RM: " + result.rm1 : null}}</div>
-                  </ion-col>
-                </ion-row>
+              <div class="exercise-prop">
+                  <h3>{{result.dbExercise.primaryMuscles | titlecase}}</h3>
+                  <div>{{result.rm1 ? "1RM: " + result.rm1 : null}}</div>
               </div>
             </ion-label>
           </ion-item>
