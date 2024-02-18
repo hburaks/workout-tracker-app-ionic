@@ -1,13 +1,49 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>start-workout</ion-title>
+    <ion-title class="ion-text-center">Start Workout</ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-sm="6">
+        <ion-row class="ion-margin-top ion-align-items-center">
+          <ion-col class="ion-margin-start">
+            <ion-header>Quick Start</ion-header>
+          </ion-col>
+          <ion-col class="flex ion-justify-content-end ion-margin-end">
+            <ion-button fill="outline" size="small" (click)="createTemplate()">+Template</ion-button>
+            <ion-button size="small">
+              <ion-icon slot="icon-only" name="folder-open-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button expand="block">Start Empty Workout</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-margin-top">
+          <ion-col size="6" *ngFor="let workoutTemplate of workoutTemplates">
+            <ion-card class="ion-no-margin ion-padding">
+              <div class="card-header">
+                <ion-card-header class="ion-no-padding card-header">
+                  <ion-card-title><h5>{{workoutTemplate.name}}</h5></ion-card-title>
+                  <ion-button size="small">
+                    <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+                  </ion-button>
+                </ion-card-header>
+                <div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">start-workout</ion-title>
-    </ion-toolbar>
-  </ion-header>
+                </div>
+              </div>
+              <ion-card-content class="ion-no-padding">
+                Here's a small text description for the card content. Nothing more, nothing less.
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

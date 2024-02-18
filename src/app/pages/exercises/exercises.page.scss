@@ -2,10 +2,11 @@
   position: fixed;
   display: flex;
   justify-content: center;
-  align-items: center;
   width: 100%;
   height: 100%;
   z-index: 2;
+  margin-top: 3rem;
+  margin-bottom: 4rem;
 }
 
 .background-cover {
@@ -16,26 +17,35 @@
   width: 100%;
   height: 100%;
   z-index: 1;
-  opacity: 0.1;
+  opacity: 0.3;
   background-color: grey;
 }
 
-#close-button {
+/*#close-button {
   position: absolute;
+  top: 4rem;
   right: 0;
   z-index: 3;
-}
+}*/
 
 ion-card {
   margin: 0;
 }
 
 ion-accordion-group {
-  margin: 0;
+  margin: 0.5rem;
 }
 
 .exercise-prop {
   display: flex;
   justify-content: space-between;
   color: grey;
+}
+
+.exercise-icon {
+  display: flex;
+  justify-content: center;
+}
+.exercises {
+  margin: 8px;
 }
